@@ -52,6 +52,20 @@ class Graph Implements GraphInterface
 	
 	public function incidentEdges($v)
 	{
+		$s = new Set;
+		
+		foreach($this->edges as $edge)
+		{
+			if ($edge->vertices()->isMember($v))
+			{
+				$s->add($edge);
+			}
+		}
+		
+		if ($s->size() == 2)
+			return $s;
+		
+		return null;
 	}
 	
 	public function opposite($v, $e)
@@ -60,6 +74,15 @@ class Graph Implements GraphInterface
 	
 	public function endVertices($e)
 	{
+		foreach($this->edges as $edge)
+		{
+			if ($e === $edge)
+			{
+				return $e->vertices();
+			}
+		}
+		
+		return null;
 	}
 	
 	public function areAdjacent($v, $w)

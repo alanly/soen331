@@ -38,6 +38,32 @@ class GraphTest extends TestCase
 		$this->assertNotNull($g->getEdge($v, $w));
 	}
 	
+	public function testIncidentEdges()
+	{
+		$g = new Graph;
+		$u = new Vertex;
+		$v = new Vertex;
+		$w = new Vertex;
+
+		$g->insertEdge($v, $w, 'foo');
+		$g->insertEdge($w, $u, 'bar');
+
+		$this->assertNotNull($g->incidentEdges($w));
+	}
+	
+	public function testEndVertices()
+	{
+		$g = new Graph;
+		$v = new Vertex;
+		$w = new Vertex;
+
+		$g->insertEdge($v, $w, 'foo');
+		$e = $g->getEdge($v, $w);
+		
+		$this->assertTrue($g->endVertices($e)->isMember($v));
+		$this->assertTrue($g->endVertices($e)->isMember($w));
+	}
+	
 	public function testGetEdgeElem()
 	{
 		$g = new Graph;
