@@ -14,7 +14,7 @@ class Set implements SetInterface, \IteratorAggregate
 	/**
 	 * Add element $e to the set and return an updated set.
 	 * @param mixed $e
-	 * @return SetInterface
+	 * @return Set
 	 */
 	public function add($e)
 	{
@@ -28,7 +28,7 @@ class Set implements SetInterface, \IteratorAggregate
 	/**
 	 * Remove element $e from the set and return an updated set.
 	 * @param  mixed $e
-	 * @return SetInterface
+	 * @return Set
 	 */
 	public function remove($e)
 	{
