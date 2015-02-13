@@ -11,13 +11,13 @@ class UndirectedEdge implements EdgeInterface
 	 * The start vertex of the edge.
 	 * @var Vertex
 	 */
-	private $startVertex;
+	protected $startVertex;
 
 	/**
 	 * The end vertex of the edge.
 	 * @var Vertex
 	 */
-	private $endVertex;
+	protected $endVertex;
 
 	/**
 	 * The element stored on the edge.
