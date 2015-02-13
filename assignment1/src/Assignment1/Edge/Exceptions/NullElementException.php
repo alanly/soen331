@@ -1,4 +1,4 @@
 <?php
-namespace Assignment\Edge\Exceptions;
+namespace Assignment1\Edge\Exceptions;
 
 class NullElementException extends \InvalidArgumentException {}
