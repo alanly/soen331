@@ -1,7 +1,7 @@
 <?php
 namespace Assignment1\Vector;
 
-class Vector
+class Vector implements \IteratorAggregate
 {
 	/**
 	 * The x-value of the vector.
@@ -75,5 +75,14 @@ class Vector
 	public function toArray()
 	{
 		return [$this->x, $this->y];
+	}
+
+	/**
+	 * Returns an external iterator instance.
+	 * @return Traversable
+	 */
+	public function getIterator()
+	{
+		return new \ArrayIterator($this->toArray());
 	}
 }
