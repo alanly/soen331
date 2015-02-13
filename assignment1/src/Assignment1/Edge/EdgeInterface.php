@@ -17,8 +17,10 @@ interface EdgeInterface
 
 	/**
 	 * Replace the element at the edge with element $e. Returns the updated edge.
+	 * An exception is thrown is the replacement element is null.
 	 * @param  mixed $e
 	 * @return EdgeInterface
+	 * @throws Assignment1\Edge\Exceptions\NullElementException
 	 */
 	public function replaceElement($e);
 
