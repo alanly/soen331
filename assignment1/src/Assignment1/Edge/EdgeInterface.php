@@ -21,4 +21,11 @@ interface EdgeInterface
 	 * @return EdgeInterface
 	 */
 	public function replaceElement($e);
+
+	/**
+	 * Returns the edge as a set made up of a collection of its end-vertices and
+	 * the element it holds.
+	 * @return Assignment1\Set\SetInterface
+	 */
+	public function toSet();
 }
