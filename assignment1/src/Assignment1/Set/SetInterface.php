@@ -4,12 +4,6 @@ namespace Assignment1\Set;
 interface SetInterface
 {
 	/**
-	 * Create a new and empty set.
-	 * @return SetInterface
-	 */
-	public function newset();
-
-	/**
 	 * Add element $e to the set and return an updated set.
 	 * @param mixed $e
 	 * @return SetInterface
