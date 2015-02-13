@@ -10,12 +10,6 @@ use Assignment1\Vertex\VertexInterface;
 interface GraphInterface
 {
 	/**
-	 * Creates a new, empty, and undirected graph.
-	 * @return GraphInterface
-	 */
-	public function newgraph();
-
-	/**
 	 * Return a set of all the vertices in the graph.
 	 * @return SetInterface
 	 */
@@ -54,7 +48,7 @@ interface GraphInterface
 	 * @param  VertexInterface $v
 	 * @return SetInterface
 	 */
-	public function incidentedges($v);
+	public function incidentEdges($v);
 
 	/**
 	 * Return the endvertex of edge $e distinct from vertex $v. An exception is
