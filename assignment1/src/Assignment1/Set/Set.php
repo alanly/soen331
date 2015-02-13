@@ -4,9 +4,8 @@ namespace Assignment1\Set;
 class Set implements SetInterface, \IteratorAggregate
 {
 	/**
-	 * A dictionary containing the elements. To enforce uniqueness, the actual
-	 * element is stored as the `key` in the (key,value) relation. The value can
-	 * be an arbitrary placeholder.
+	 * A dictionary containing the elements. The key is the hash value of the
+	 * object.
 	 * @var array
 	 */
 	private $elements = [];
@@ -18,8 +17,10 @@ class Set implements SetInterface, \IteratorAggregate
 	 */
 	public function add($e)
 	{
-		if (! $this->isMember($e)) {
-			$this->elements[$e] = 1;
+		$hashValue = $this->getHashValue($e);
+
+		if (! $this->isMember($hashValue)) {
+			$this->elements[$hashValue] = $e;
 		}
 
 		return $this;
@@ -32,7 +33,7 @@ class Set implements SetInterface, \IteratorAggregate
 	 */
 	public function remove($e)
 	{
-		unset($this->elements[$e]);
+		unset($this->elements[$this->getHashValue($e)]);
 
 		return $this;
 	}
@@ -62,7 +63,7 @@ class Set implements SetInterface, \IteratorAggregate
 	 */
 	public function isMember($e)
 	{
-		return isset($this->elements[$e]);
+		return isset($this->elements[$this->getHashValue($e)]);
 	}
 
 	/**
@@ -71,7 +72,7 @@ class Set implements SetInterface, \IteratorAggregate
 	 */
 	public function toArray()
 	{
-		return array_keys($this->elements);
+		return array_values($this->elements);
 	}
 
 	/**
@@ -81,5 +82,19 @@ class Set implements SetInterface, \IteratorAggregate
 	public function getIterator()
 	{
 		return new \ArrayIterator($this->toArray());
+	}
+
+	/**
+	 * Returns the hash value for the object or value $e.
+	 * @param  mixed $e
+	 * @return string
+	 */
+	private function getHashValue($e)
+	{
+		if (is_object($e)) {
+			return spl_object_hash($e);
+		}
+
+		return sha1($e);
 	}
 }
