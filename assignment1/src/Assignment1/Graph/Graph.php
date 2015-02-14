@@ -8,8 +8,8 @@ use Assignment1\Edge\UndirectedEdge;
 
 class Graph Implements GraphInterface
 {
-	private $edges;
-	private $vertices;
+	protected $edges;
+	protected $vertices;
 	
   function __construct()
 	{

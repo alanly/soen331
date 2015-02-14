@@ -9,6 +9,7 @@ class DirectedGraph extends Graph
 {
   function __construct()
 	{
+		parent::__construct();
   }
 
 	public function insertDirectedEdge($v, $w, $x)
