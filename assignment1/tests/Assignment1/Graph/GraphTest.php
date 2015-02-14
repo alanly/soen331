@@ -112,6 +112,7 @@ class GraphTest extends TestCase
 		$e = $g->getEdge($v, $w);
 		
 		$this->assertNotNull($g->getEdgeElem($e));
+		$this->assertSame($g->getEdgeElem($e), 'foo');
 	}
 	
 	public function testReplaceEdgeElem()
