@@ -130,7 +130,7 @@ class GraphTest extends TestCase
 		$this->assertEquals($g->vertices()->size(), 1);
 	}
 	
-	public function testInsertAndRemoveAreInverse()
+	public function testVertexInsertAndRemoveAreInverse()
 	{
 		$g = new Graph;
 		$v = new Vertex;
@@ -138,5 +138,16 @@ class GraphTest extends TestCase
 		$g->insertVertex($v)->removeVertex($v);
 		
 		$this->assertEquals($g->countAllVertices(), 0);
+	}
+	
+	public function testEdgeInsertAndRemoveAreInverse()
+	{
+		$g = new Graph;
+		$v = new Vertex;
+		$w = new Vertex;
+		
+		$g->insertEdge($v, $w, 'foo')->removeEdge($v, $w);
+		
+		$this->assertEquals($g->countAllEdges(), 0);
 	}
 }
