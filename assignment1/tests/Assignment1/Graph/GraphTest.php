@@ -80,6 +80,20 @@ class GraphTest extends TestCase
 		$this->assertTrue($g->endVertices($e)->isMember($w));
 	}
 	
+	public function testAreAdjacent()
+	{
+		$g = new Graph;
+		$u = new Vertex;
+		$v = new Vertex;
+		$w = new Vertex;
+
+		$g->insertEdge($v, $w, 'foo');
+		$g->insertEdge($w, $u, 'bar');
+		
+		$this->assertTrue($g->areAdjacent($v, $w));
+		$this->assertFalse($g->areAdjacent($v, $u));
+	}
+	
 	public function testGetEdgeElem()
 	{
 		$g = new Graph;
