@@ -2,8 +2,8 @@
 namespace Assignment1\Graph;
 
 use Assignment1\TestCase;
+use Assignment1\Set\Set;
 use Assignment1\Vertex\Vertex;
-
 
 class GraphTest extends TestCase
 {
@@ -48,7 +48,15 @@ class GraphTest extends TestCase
 		$g->insertEdge($v, $w, 'foo');
 		$g->insertEdge($w, $u, 'bar');
 
+		$e = $g->getEdge($v, $w);
+		$f = $g->getEdge($w, $u);
+		
+		$s = new Set;
+		$s->add($e);
+		$s->add($f);
+
 		$this->assertNotNull($g->incidentEdges($w));
+		$this->assertEquals($s->toArray(), $g->incidentEdges($w)->toArray());
 	}
 	
 	public function testOpposite()
