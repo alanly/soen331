@@ -106,4 +106,27 @@ class GraphTest extends TestCase
 		$this->assertNotEquals($g->getEdgeElem($e), 'foo');
 		$this->assertEquals($g->getEdgeElem($e), 'bar');
 	}
+	
+	public function testCardinalityDistinctVertices()
+	{
+		$g = new Graph;
+		$v = new Vertex;
+		$w = new Vertex;
+
+		$g->insertVertex($v);
+		$g->insertVertex($w);
+		
+		$this->assertEquals($g->vertices()->size(), 2);
+	}
+	
+	public function testCardinalitySameVertices()
+	{
+		$g = new Graph;
+		$v = new Vertex;
+
+		$g->insertVertex($v);
+		$g->insertVertex($v);
+		
+		$this->assertEquals($g->vertices()->size(), 1);
+	}
 }
