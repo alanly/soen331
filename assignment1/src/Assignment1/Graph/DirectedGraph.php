@@ -13,8 +13,8 @@ class DirectedGraph extends Graph
 
 	public function insertDirectedEdge($v, $w, $x)
 	{
-		$this->vertices->add($v);
-		$this->vertices->add($w);
+		$this->vertices()->add($v);
+		$this->vertices()->add($w);
 				
 		$e = new DirectedEdge($v, $w, $x);
 		$this->edges->add($e);
