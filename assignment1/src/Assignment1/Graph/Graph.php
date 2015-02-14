@@ -70,6 +70,18 @@ class Graph Implements GraphInterface
 	
 	public function opposite($v, $e)
 	{
+		foreach($this->edges as $edge)
+		{
+			if ($e === $edge)
+			{
+				if ($e->vertices()->isMember($v))
+				{
+					return $e->vertices()->remove($v)->toArray()[0];
+				}
+			}
+		}
+		
+		return null;
 	}
 	
 	public function endVertices($e)

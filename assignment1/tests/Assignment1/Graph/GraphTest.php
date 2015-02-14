@@ -51,6 +51,22 @@ class GraphTest extends TestCase
 		$this->assertNotNull($g->incidentEdges($w));
 	}
 	
+	public function testOpposite()
+	{
+		$g = new Graph;
+		$u = new Vertex;
+		$v = new Vertex;
+		$w = new Vertex;
+
+		$g->insertEdge($v, $w, 'foo');
+		$g->insertEdge($w, $u, 'bar');
+		$e = $g->getEdge($v, $w);
+		$f = $g->getEdge($w, $u);
+		
+		$this->assertSame($g->opposite($v, $e), $w);
+		$this->assertSame($g->opposite($u, $f), $w);
+	}
+	
 	public function testEndVertices()
 	{
 		$g = new Graph;
