@@ -129,4 +129,14 @@ class GraphTest extends TestCase
 		
 		$this->assertEquals($g->vertices()->size(), 1);
 	}
+	
+	public function testInsertAndRemoveAreInverse()
+	{
+		$g = new Graph;
+		$v = new Vertex;
+
+		$g->insertVertex($v)->removeVertex($v);
+		
+		$this->assertEquals($g->countAllVertices(), 0);
+	}
 }
