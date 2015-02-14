@@ -126,6 +126,9 @@ class Graph Implements GraphInterface
 	
 	public function insertEdge($v, $w, $x)
 	{
+		$this->vertices->add($v);
+		$this->vertices->add($w);
+				
 		$e = new UndirectedEdge($v, $w, $x);
 		$this->edges->add($e);
 		
