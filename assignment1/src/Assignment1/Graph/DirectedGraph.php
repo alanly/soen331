@@ -34,5 +34,58 @@ class DirectedGraph extends Graph
 				$s->add($edge);
 			}
 		}
+		
+		if ($s->size() > 0)
+			return $s;
+		
+		return null;
+	}
+	
+	public function inDegreeOf($v)
+	{
+		$i = 0;
+		
+		foreach($this->edges as $edge)
+		{
+			if ($edge->vertices()->getY() === $v)
+			{
+				$i++;
+			}
+		}
+		
+		return $i;
+	}
+	
+	public function outDegreeOf($v)
+	{
+		$i = 0;
+		
+		foreach($this->edges as $edge)
+		{
+			if ($edge->vertices()->getX() === $v)
+			{
+				$i++;
+			}
+		}
+		
+		return $i;
+	}
+	
+	public function outgoingEdgesOf($v)
+	{
+		$s = new Set;
+		
+		foreach($this->edges as $edge)
+		{
+			if ($edge->vertices()->getX() === $v)
+			{
+				$s->add($edge);
+			}
+		}
+		
+		if ($s->size() > 0)
+			return $s;
+		
+		return null;
 	}
 }

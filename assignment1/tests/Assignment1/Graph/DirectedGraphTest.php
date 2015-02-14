@@ -26,4 +26,62 @@ class DirectedGraphTest extends TestCase
 	{
 		$this->assertEquals((new Graph)->countAllEdges(), 0);
 	}
+	
+	public function testIncomingEdgesOf()
+	{
+		$g = new DirectedGraph;
+		$v = new Vertex;
+		$w = new Vertex;
+
+		$g->insertDirectedEdge($v, $w, 'x');
+		$g->insertDirectedEdge($w, $v, 'x');
+
+		$e = $g->getEdge($v, $v);
+
+		$s = new Set;
+		$s->add($e);
+		
+		$this->assertEquals($g->incomingEdgesOf($v)->toArray(), $s->toArray());
+	}
+	
+	public function testIndegree()
+	{
+		$g = new DirectedGraph;
+		$v = new Vertex;
+		$w = new Vertex;
+
+		$g->insertDirectedEdge($v, $w, 'x');
+		$g->insertDirectedEdge($w, $v, 'y');
+
+		$this->assertEquals($g->inDegreeOf($v), 1);
+	}
+	
+	public function testOutdegree()
+	{
+		$g = new DirectedGraph;
+		$v = new Vertex;
+		$w = new Vertex;
+
+		$g->insertDirectedEdge($v, $w, 'x');
+		$g->insertDirectedEdge($w, $v, 'y');
+
+		$this->assertEquals($g->outDegreeOf($v), 1);
+	}
+	
+	public function testOutgoingEdgesOf()
+	{
+		$g = new DirectedGraph;
+		$v = new Vertex;
+		$w = new Vertex;
+
+		$g->insertDirectedEdge($v, $w, 'x');
+		$g->insertDirectedEdge($w, $v, 'y');
+
+		$e = $g->getEdge($v, $w);
+
+		$s = new Set;
+		$s->add($e);
+
+		$this->assertEquals($g->outgoingEdgesOf($v)->toArray(), $s->toArray());
+	}
 }
