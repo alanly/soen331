@@ -41,7 +41,7 @@ class Graph Implements GraphInterface
 	{
 		foreach($this->edges as $edge)
 		{
-			if ($edge->vertices()->isMember($v) && $edge->vertices()->isMember($w))
+			if ($edge->vertices()->getX() === $v && $edge->vertices()->getY() === $w)
 			{
 				return $edge;
 			}

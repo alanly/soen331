@@ -34,9 +34,9 @@ class DirectedGraphTest extends TestCase
 		$w = new Vertex;
 
 		$g->insertDirectedEdge($v, $w, 'x');
-		$g->insertDirectedEdge($w, $v, 'x');
+		$g->insertDirectedEdge($w, $v, 'y');
 
-		$e = $g->getEdge($v, $v);
+		$e = $g->getEdge($w, $v);
 
 		$s = new Set;
 		$s->add($e);
@@ -83,5 +83,31 @@ class DirectedGraphTest extends TestCase
 		$s->add($e);
 
 		$this->assertEquals($g->outgoingEdgesOf($v)->toArray(), $s->toArray());
+	}
+	
+	public function testInDegreeOfAlternate()
+	{
+		$g = new DirectedGraph;
+		$u = new Vertex;
+		$v = new Vertex;
+		$w = new Vertex;
+
+		$g->insertDirectedEdge($v, $w, 'x');
+		$g->insertDirectedEdge($u, $w, 'y');
+
+		$this->assertEquals($g->inDegreeOf($w), 2);
+	}
+	
+	public function testOutDegreeOfAlternate()
+	{
+		$g = new DirectedGraph;
+		$u = new Vertex;
+		$v = new Vertex;
+		$w = new Vertex;
+
+		$g->insertDirectedEdge($v, $w, 'x');
+		$g->insertDirectedEdge($u, $w, 'y');
+
+		$this->assertEquals($g->outDegreeOf($v), 1);
 	}
 }
