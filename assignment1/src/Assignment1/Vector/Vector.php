@@ -69,6 +69,16 @@ class Vector implements \IteratorAggregate
 	}
 
 	/**
+	 * Tests whether the vector contains $e.
+	 * @param  mixed  $e
+	 * @return boolean
+	 */
+	public function isMember($e)
+	{
+		return ($e === $this->x) || ($e === $this->y);
+	}
+
+	/**
 	 * Returns an array representation of this vector in the form [x, y].
 	 * @return array
 	 */
