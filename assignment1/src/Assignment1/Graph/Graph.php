@@ -138,7 +138,7 @@ class Graph Implements GraphInterface
 		{
 			if ($edge->vertices()->isMember($v) && $edge->vertices()->isMember($w))
 			{
-				$this->$edges->remove($edge);
+				$this->edges->remove($edge);
 			}
 		}
 		
