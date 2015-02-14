@@ -12,6 +12,19 @@ class DirectedGraph extends Graph
 		parent::__construct();
   }
 
+	public function getEdge($v, $w)
+	{
+		foreach($this->edges as $edge)
+		{
+			if ($edge->vertices()->getX() === $v && $edge->vertices()->getY() === $w)
+			{
+				return $edge;
+			}
+		}
+		
+		throw new NonExistentEdgeException;
+	}
+
 	public function insertDirectedEdge($v, $w, $x)
 	{
 		$this->vertices()->add($v);
