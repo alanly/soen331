@@ -17,7 +17,7 @@ public class BalancedBinTree extends BinTree {
 			lh = this.getLeft().height();
 		}
 		if (this.getRight() != null) {
-			lh = this.getRight().height();
+			rh = this.getRight().height();
 		}
 		if (Math.abs(lh - rh) < 2) {
 			return true;
