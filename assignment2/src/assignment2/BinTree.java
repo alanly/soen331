@@ -43,7 +43,6 @@ public class BinTree implements IBinTree {
 	
 	@requires({"left != null", "right != null", "$this.left == null", "$this.right == null"})
 	@ensures({"$this.left != null", "$this.right != null", "$this.left == left", "$this.right == right"})
-	@Override
 	public void setLeftRight(IBinTree left, IBinTree right) {
 		this.left = left;
 		this.right = right;
@@ -81,13 +80,19 @@ public class BinTree implements IBinTree {
 		
 		return Math.max(leftHeight, rightHeight) + 1;
 	}
+	
+	public boolean isBalanced() {
+		int leftHeight = (this.left == null) ? 0 : this.left.height();
+		int rightHeight = (this.right == null) ? 0 : this.right.height();
+		
+		return Math.abs(leftHeight - rightHeight) < 2;
+	}
 
-	@Override
 	public boolean isTwoOrNoLeaf() {
-		if (this.left == null & this.right == null) {
+		if (this.left == null && this.right == null) {
 			return true;
 		}
-		if (this.left != null & this.right != null) {
+		if (this.left != null && this.right != null) {
 			return this.getLeft().isTwoOrNoLeaf() && this.getRight().isTwoOrNoLeaf();
 		}
 		
