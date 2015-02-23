@@ -85,7 +85,7 @@ public class BinTree implements IBinTree {
 			return true;
 		}
 		if (this.left != null & this.right != null) {
-			return true;
+			return this.getLeft().isTwoOrNoLeaf() && this.getRight().isTwoOrNoLeaf();
 		}
 		
 		return false;
