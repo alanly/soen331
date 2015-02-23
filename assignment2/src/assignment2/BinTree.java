@@ -7,8 +7,8 @@ public class BinTree implements IBinTree {
 
 	@SuppressWarnings("unused")
 	private long id;
-	private BinTree left;
-	private BinTree right;
+	private IBinTree left;
+	private IBinTree right;
 	
 	@ensures({"id != null", "$this.left == null", "$this.right == null"})
 	public BinTree(long id) {
@@ -28,14 +28,14 @@ public class BinTree implements IBinTree {
 	@requires({"bt != null", "$this.left == null"})
 	@ensures({"bt != null", "$this.left == bt"})
 	@Override
-	public void setLeft(BinTree bt) {
+	public void setLeft(IBinTree bt) {
 		this.left = bt;
 	}
 
 	@requires({"bt != null", "$this.right == null"})
 	@ensures({"bt != null", "$this.right == bt"})
 	@Override
-	public void setRight(BinTree bt) {
+	public void setRight(IBinTree bt) {
 		this.right = bt;
 	}
 
@@ -56,6 +56,7 @@ public class BinTree implements IBinTree {
 		if (left != null) {
 			i += left.sumNodes();
 		}
+		
 		if (right != null) {
 			i += right.sumNodes();
 		}
