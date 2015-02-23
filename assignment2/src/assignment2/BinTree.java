@@ -1,5 +1,8 @@
 package assignment2;
 
+import be.ac.ua.ansymo.adbc.annotations.ensures;
+import be.ac.ua.ansymo.adbc.annotations.requires;
+
 public class BinTree implements IBinTree {
 
 	@SuppressWarnings("unused")
@@ -7,10 +10,11 @@ public class BinTree implements IBinTree {
 	private BinTree left;
 	private BinTree right;
 	
+	@ensures({"id != null", "$this.left == null", "$this.right == null"})
 	public BinTree(long id) {
 		this.id = id;
 	}
-	
+
 	@Override
 	public IBinTree getLeft() {
 		return left;
@@ -21,11 +25,15 @@ public class BinTree implements IBinTree {
 		return right;
 	}
 
+	@requires({"bt != null", "$this.left == null"})
+	@ensures({"bt != null", "$this.left == bt"})
 	@Override
 	public void setLeft(BinTree bt) {
 		this.left = bt;
 	}
 
+	@requires({"bt != null", "$this.right == null"})
+	@ensures({"bt != null", "$this.right == bt"})
 	@Override
 	public void setRight(BinTree bt) {
 		this.right = bt;
