@@ -66,17 +66,10 @@ public class BinTree implements IBinTree {
 
 	@Override
 	public int height() {
-		int l = 0;
-		int r = 0;
+		int leftHeight = (this.left != null) ? this.left.height() : 0;
+		int rightHeight = (this.right != null) ? this.right.height() : 0;
 		
-		if (left != null) {
-			l = left.sumNodes();
-		}
-		if (right != null) {
-			r += right.sumNodes();
-		}
-		
-		return ((l > r) ? l : r);
+		return Math.max(leftHeight, rightHeight) + 1;
 	}
 
 }
