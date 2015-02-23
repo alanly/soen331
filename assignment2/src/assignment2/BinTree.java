@@ -1,8 +1,10 @@
 package assignment2;
 
 import be.ac.ua.ansymo.adbc.annotations.ensures;
+import be.ac.ua.ansymo.adbc.annotations.invariant;
 import be.ac.ua.ansymo.adbc.annotations.requires;
 
+@invariant("$this.height() != 0")
 public class BinTree implements IBinTree {
 
 	@SuppressWarnings("unused")
@@ -10,30 +12,31 @@ public class BinTree implements IBinTree {
 	private IBinTree left;
 	private IBinTree right;
 	
-	@ensures({"id != null", "$this.left == null", "$this.right == null"})
+	@requires("id != null")
+	@ensures({"$this.left == null", "$this.right == null"})
 	public BinTree(long id) {
 		this.id = id;
 	}
 
 	@Override
 	public IBinTree getLeft() {
-		return left;
+		return this.left;
 	}
 
 	@Override
 	public IBinTree getRight() {
-		return right;
+		return this.right;
 	}
 
 	@requires({"bt != null", "$this.left == null"})
-	@ensures({"bt != null", "$this.left == bt"})
+	@ensures({"$this.left != null", "$this.left == bt"})
 	@Override
 	public void setLeft(IBinTree bt) {
 		this.left = bt;
 	}
 
 	@requires({"bt != null", "$this.right == null"})
-	@ensures({"bt != null", "$this.right == bt"})
+	@ensures({"$this.right != null", "$this.right == bt"})
 	@Override
 	public void setRight(IBinTree bt) {
 		this.right = bt;
@@ -41,24 +44,24 @@ public class BinTree implements IBinTree {
 
 	@Override
 	public boolean hasLeft() {
-		return left == null;
+		return this.left == null;
 	}
 
 	@Override
 	public boolean hasRight() {
-		return right == null;
+		return this.right == null;
 	}
 
 	@Override
 	public int sumNodes() {
 		int i = 1;
 		
-		if (left != null) {
-			i += left.sumNodes();
+		if (this.left != null) {
+			i += this.left.sumNodes();
 		}
 		
-		if (right != null) {
-			i += right.sumNodes();
+		if (this.right != null) {
+			i += this.right.sumNodes();
 		}
 		
 		return i;
