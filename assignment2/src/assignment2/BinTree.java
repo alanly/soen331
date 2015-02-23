@@ -37,6 +37,14 @@ public class BinTree implements IBinTree {
 	public void setRight(IBinTree bt) {
 		this.right = bt;
 	}
+	
+	@requires({"left != null", "right != null", "$this.left == null", "$this.right == null"})
+	@ensures({"$this.left != null", "$this.right != null", "$this.left == left", "$this.right == right"})
+	@Override
+	public void setLeftRight(IBinTree left, IBinTree right) {
+		this.left = left;
+		this.right = right;
+	}
 
 	@Override
 	public boolean hasLeft() {
