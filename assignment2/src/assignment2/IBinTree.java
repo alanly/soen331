@@ -10,5 +10,6 @@ public interface IBinTree {
 	public boolean hasRight();
 	public int sumNodes();
 	public int height();
+	public boolean isTwoOrNoLeaf();
 	
 }

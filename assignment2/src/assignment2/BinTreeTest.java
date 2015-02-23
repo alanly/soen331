@@ -5,6 +5,7 @@ public class BinTreeTest {
 	public static void main(String[] args) {
 		binTreeTest();
 		balancedBinTreeTest();
+		isTwoOrNoLeafTest();
 		System.out.println("Done.");
 	}
 
@@ -84,6 +85,17 @@ public class BinTreeTest {
 		bt7.setRight(bt15);
 
 		System.out.println("Built new BalancedBinTree with height " + bt1.height() + " and " + bt1.sumNodes() + " total nodes.");
+	}
+	
+	static void isTwoOrNoLeafTest() {
+		BinTree bt1 = new BinTree(1);
+		System.out.println("Should be true: " + bt1.isTwoOrNoLeaf());
+		BinTree bt2 = new BinTree(2);
+		bt1.setLeft(bt2);
+		System.out.println("Should be false: " + bt1.isTwoOrNoLeaf());
+		BinTree bt3 = new BinTree(3);
+		bt1.setRight(bt3);
+		System.out.println("Should be true: " + bt1.isTwoOrNoLeaf());
 	}
 	
 }

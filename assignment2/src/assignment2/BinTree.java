@@ -71,4 +71,16 @@ public class BinTree implements IBinTree {
 		return Math.max(leftHeight, rightHeight) + 1;
 	}
 
+	@Override
+	public boolean isTwoOrNoLeaf() {
+		if (this.left == null & this.right == null) {
+			return true;
+		}
+		if (this.left != null & this.right != null) {
+			return true;
+		}
+		
+		return false;
+	}
+
 }
