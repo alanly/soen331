@@ -5,8 +5,7 @@ import be.ac.ua.ansymo.adbc.annotations.requires;
 
 public class BinTree implements IBinTree {
 
-	@SuppressWarnings("unused")
-	private long id;
+	protected long id;
 	private IBinTree left;
 	private IBinTree right;
 	

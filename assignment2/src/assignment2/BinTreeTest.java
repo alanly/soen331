@@ -9,39 +9,81 @@ public class BinTreeTest {
 	}
 
 	static void binTreeTest() {
-		BinTree bt = new BinTree(1);
+		BinTree bt1 = new BinTree(1);
+		BinTree bt2 = new BinTree(2);
+		BinTree bt3 = new BinTree(3);
+		BinTree bt4 = new BinTree(4);
+		BinTree bt5 = new BinTree(5);
+		BinTree bt6 = new BinTree(6);
+		BinTree bt7 = new BinTree(7);
+		BinTree bt8 = new BinTree(8);
+		BinTree bt9 = new BinTree(9);
+		BinTree bt10 = new BinTree(10);
+		BinTree bt11 = new BinTree(11);
+		BinTree bt12 = new BinTree(12);
+		BinTree bt13 = new BinTree(13);
 		
-		//setLeft(BinTree iBinTree) will reject parameters which are null.
-		//bt.setLeft(null);
+		bt1.setLeft(bt2);
+		bt1.setRight(bt3);
 		
-		bt.setLeft(new BinTree(2));
+		bt2.setLeft(bt4);
+		bt2.setRight(bt5);
 		
-		//setLeft(BinTree iBinTree) will make sure it is not overwriting a node.
-		//bt.setLeft(new BinTree(3));
+		bt3.setLeft(bt6);
+		bt3.setRight(bt7);
 		
-		//setRight(BinTree iBinTree) will reject parameters which are null.
-		//bt.setRight(null);
+		bt4.setLeft(bt8);
+		bt4.setRight(bt9);
 		
-		bt.setRight(new BinTree(4));
+		bt5.setLeft(bt10);
+		bt5.setRight(bt11);
 		
-		//setRight(BinTree iBinTree) will make sure it is not overwriting a node.
-		//bt.setRight(new BinTree(5));
+		bt7.setRight(bt12);
+		
+		bt12.setLeft(bt13);
+
+		System.out.println("Built new BinTree with height " + bt1.height() + " and " + bt1.sumNodes() + " total nodes.");
 	}
 	
 	static void balancedBinTreeTest() {
-		BalancedBinTree bt = new BalancedBinTree(1);
-		bt.setLeft(new BalancedBinTree(2));
+		BalancedBinTree bt1 = new BalancedBinTree(1);
+		BinTree bt2 = new BinTree(2);
+		BinTree bt3 = new BinTree(3);
+		BinTree bt4 = new BinTree(4);
+		BinTree bt5 = new BinTree(5);
+		BinTree bt6 = new BinTree(6);
+		BinTree bt7 = new BinTree(7);
+		BinTree bt8 = new BinTree(8);
+		BinTree bt9 = new BinTree(9);
+		BinTree bt10 = new BinTree(10);
+		BinTree bt11 = new BinTree(11);
+		BinTree bt12 = new BinTree(12);
+		BinTree bt13 = new BinTree(13);
+		BinTree bt14 = new BinTree(14);
+		BinTree bt15 = new BinTree(15);
 		
-		BalancedBinTree bt2 = new BalancedBinTree(3);
-		bt2.setLeft(new BalancedBinTree(4));
-		//bt2.setRight(new BalancedBinTree(5));
-		bt.setRight(bt2);
+		bt1.setLeft(bt2);
+		bt1.setRight(bt3);
 		
-		BalancedBinTree bt3 = new BalancedBinTree(3);
-		bt3.setLeft(new BalancedBinTree(4));
-		bt3.setRight(new BalancedBinTree(5));
-		bt2.setRight(bt3);
-		//bt.isBalanced();
+		bt2.setLeft(bt4);
+		bt2.setRight(bt5);
+		
+		bt3.setLeft(bt6);
+		bt3.setRight(bt7);
+		
+		bt4.setLeft(bt8);
+		bt4.setRight(bt9);
+		
+		bt5.setLeft(bt10);
+		bt5.setRight(bt11);
+		
+		bt6.setLeft(bt12);
+		bt6.setRight(bt13);
+		
+		bt7.setLeft(bt14);
+		bt7.setRight(bt15);
+
+		System.out.println("Built new BalancedBinTree with height " + bt1.height() + " and " + bt1.sumNodes() + " total nodes.");
 	}
 	
 }
