@@ -44,12 +44,12 @@ public class BinTree implements IBinTree {
 
 	@Override
 	public boolean hasLeft() {
-		return this.left == null;
+		return this.left != null;
 	}
 
 	@Override
 	public boolean hasRight() {
-		return this.right == null;
+		return this.right != null;
 	}
 
 	@Override
