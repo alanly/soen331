@@ -51,7 +51,7 @@ public class BinTree implements IBinTree {
 
 	@Override
 	public int sumNodes() {
-		int i = 0;
+		int i = 1;
 		
 		if (left != null) {
 			i += left.sumNodes();
