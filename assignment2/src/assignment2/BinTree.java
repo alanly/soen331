@@ -17,26 +17,22 @@ public class BinTree implements IBinTree {
 		this.id = id;
 	}
 
-	@Override
 	public IBinTree getLeft() {
 		return this.left;
 	}
 
-	@Override
 	public IBinTree getRight() {
 		return this.right;
 	}
 
 	@requires({"bt != null", "$this.left == null"})
 	@ensures({"$this.left != null", "$this.left == bt"})
-	@Override
 	public void setLeft(IBinTree bt) {
 		this.left = bt;
 	}
 
 	@requires({"bt != null", "$this.right == null"})
 	@ensures({"$this.right != null", "$this.right == bt"})
-	@Override
 	public void setRight(IBinTree bt) {
 		this.right = bt;
 	}
@@ -48,17 +44,14 @@ public class BinTree implements IBinTree {
 		this.right = right;
 	}
 
-	@Override
 	public boolean hasLeft() {
 		return this.left != null;
 	}
 
-	@Override
 	public boolean hasRight() {
 		return this.right != null;
 	}
 
-	@Override
 	public int sumNodes() {
 		int i = 1;
 		
@@ -73,7 +66,6 @@ public class BinTree implements IBinTree {
 		return i;
 	}
 
-	@Override
 	public int height() {
 		int leftHeight = (this.left != null) ? this.left.height() : 0;
 		int rightHeight = (this.right != null) ? this.right.height() : 0;
