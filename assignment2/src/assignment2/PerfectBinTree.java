@@ -2,7 +2,7 @@ package assignment2;
 
 import be.ac.ua.ansymo.adbc.annotations.invariant;
 
-@invariant("$this.sameHeight() == true")
+@invariant({"$super", "$this.sameHeight() == true"})
 public class PerfectBinTree extends FullBinTree {
 
 	public PerfectBinTree(long id) {
