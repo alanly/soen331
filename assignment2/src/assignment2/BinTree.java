@@ -2,56 +2,72 @@ package assignment2;
 
 public class BinTree implements IBinTree {
 
+	@SuppressWarnings("unused")
+	private long id;
+	private BinTree left;
+	private BinTree right;
+	
 	public BinTree(long id) {
-		
+		this.id = id;
 	}
 	
 	@Override
 	public IBinTree getLeft() {
-		// TODO Auto-generated method stub
-		return null;
+		return left;
 	}
 
 	@Override
 	public IBinTree getRight() {
-		// TODO Auto-generated method stub
-		return null;
+		return right;
 	}
 
 	@Override
-	public IBinTree setLeft(IBinTree bt) {
-		// TODO Auto-generated method stub
-		return null;
+	public void setLeft(BinTree bt) {
+		this.left = bt;
 	}
 
 	@Override
-	public IBinTree setRight(IBinTree bt) {
-		// TODO Auto-generated method stub
-		return null;
+	public void setRight(BinTree bt) {
+		this.right = bt;
 	}
 
 	@Override
 	public boolean hasLeft() {
-		// TODO Auto-generated method stub
-		return false;
+		return left == null;
 	}
 
 	@Override
 	public boolean hasRight() {
-		// TODO Auto-generated method stub
-		return false;
+		return right == null;
 	}
 
 	@Override
 	public int sumNodes() {
-		// TODO Auto-generated method stub
-		return 0;
+		int i = 0;
+		
+		if (left != null) {
+			i += left.sumNodes();
+		}
+		if (right != null) {
+			i += right.sumNodes();
+		}
+		
+		return i;
 	}
 
 	@Override
 	public int height() {
-		// TODO Auto-generated method stub
-		return 0;
+		int l = 0;
+		int r = 0;
+		
+		if (left != null) {
+			l = left.sumNodes();
+		}
+		if (right != null) {
+			r += right.sumNodes();
+		}
+		
+		return ((l > r) ? l : r);
 	}
 
 }

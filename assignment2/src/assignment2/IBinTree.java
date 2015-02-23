@@ -4,8 +4,8 @@ public interface IBinTree {
 
 	public IBinTree getLeft();
 	public IBinTree getRight();
-	public IBinTree setLeft(IBinTree bt);
-	public IBinTree setRight(IBinTree bt);
+	public void setLeft(BinTree bt);
+	public void setRight(BinTree bt);
 	public boolean hasLeft();
 	public boolean hasRight();
 	public int sumNodes();
