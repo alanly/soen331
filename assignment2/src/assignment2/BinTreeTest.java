@@ -7,6 +7,8 @@ public class BinTreeTest {
 		balancedBinTreeTest();
 		isTwoOrNoLeafTest();
 		fullBinTreeTest();
+		perfectBinTreeTest();
+		
 		System.out.println("Done.");
 	}
 
@@ -106,6 +108,19 @@ public class BinTreeTest {
 		bt1.setLeftRight(bt2, bt3);
 		//bt1.setLeft(bt2); // breaks the class invariant
 		System.out.println("Built new FullBinTree with height " + bt1.height() + " and " + bt1.sumNodes() + " total nodes.");
+	}
+	
+	static void perfectBinTreeTest() {
+		PerfectBinTree bt1 = new PerfectBinTree(1);
+		
+		BinTree bt2 = new BinTree(2);
+		BinTree bt3 = new BinTree(3);
+		bt1.setLeftRight(bt2, bt3);
+		
+		//BinTree bt4 = new BinTree(4);
+		//BinTree bt5 = new BinTree(5);
+		//bt2.setLeftRight(bt4, bt5); // breaks the class invariant
+		System.out.println("Built new PerfectBinTree with height " + bt1.height() + " and " + bt1.sumNodes() + " total nodes.");
 	}
 	
 }
