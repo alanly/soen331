@@ -49,14 +49,10 @@ public class Client {
 		assert(bt[0].getRight() == bt[2]);
 		
 		// Contract 5: setLeft will not overwrite existing node.
-		bt[0].setLeft(bt[3]);
-		assert(bt[0].getLeft() != bt[3]);
-		assert(bt[0].getLeft() == bt[1]);
+		//bt[0].setLeft(bt[3]); // Should error out.
 		
 		// Contract 9: setRight will not overwrite existing node.
-		bt[0].setRight(bt[4]);
-		assert(bt[0].getRight() != bt[4]);
-		assert(bt[0].getRight() == bt[2]);
+		//bt[0].setRight(bt[4]); // Should error out.
 		
 		return true;
 	}
