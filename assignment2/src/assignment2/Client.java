@@ -38,7 +38,7 @@ public class Client {
 		// Contract 7: left is the node we expect.
 		assert(bt[0].getLeft() == bt[1]);
 		
-		// Constract 8: setRight rejects null parameter.
+		// Contract 8: setRight rejects null parameter.
 		//bt[0].setRight(null); // Should error out.
 		bt[0].setRight(bt[2]);
 		
