@@ -11,7 +11,6 @@ public class BinTree implements IBinTree {
 	private IBinTree left;
 	private IBinTree right;
 	
-	@requires("id != null")
 	@ensures({"$this.left == null", "$this.right == null"})
 	public BinTree(long id) {
 		this.id = id;
@@ -28,20 +27,20 @@ public class BinTree implements IBinTree {
 	@requires({"bt != null", "$this.left == null"})
 	@ensures({"$this.left != null", "$this.left == bt"})
 	public void setLeft(IBinTree bt) {
-		this.left = bt;
+		if (this.left == null) this.left = bt;
 	}
 
 	@requires({"bt != null", "$this.right == null"})
 	@ensures({"$this.right != null", "$this.right == bt"})
 	public void setRight(IBinTree bt) {
-		this.right = bt;
+		if (this.right == null) this.right = bt;
 	}
 	
 	@requires({"left != null", "right != null", "$this.left == null", "$this.right == null"})
 	@ensures({"$this.left != null", "$this.right != null", "$this.left == left", "$this.right == right"})
 	public void setLeftRight(IBinTree left, IBinTree right) {
-		this.left = left;
-		this.right = right;
+		if (this.left == null) this.left = bt;
+		if (this.right == null) this.right = bt;
 	}
 
 	public boolean hasLeft() {
