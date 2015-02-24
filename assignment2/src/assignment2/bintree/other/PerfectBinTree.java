@@ -1,4 +1,4 @@
-package assignment2;
+package assignment2.bintree.other;
 
 import be.ac.ua.ansymo.adbc.annotations.invariant;
 

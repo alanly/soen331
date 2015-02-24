@@ -1,5 +1,6 @@
-package assignment2;
+package assignment2.bintree.other;
 
+import assignment2.bintree.base.BinTree;
 import be.ac.ua.ansymo.adbc.annotations.invariant;
 
 @invariant({"$super", "$this.isTwoOrNoLeaf() == true"})
