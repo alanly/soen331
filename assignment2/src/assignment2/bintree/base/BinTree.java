@@ -27,20 +27,20 @@ public class BinTree implements IBinTree {
 	@requires({"bt != null", "$this.left == null"})
 	@ensures({"$this.left != null", "$this.left == bt"})
 	public void setLeft(IBinTree bt) {
-		if (this.left == null) this.left = bt;
+		this.left = bt;
 	}
 
 	@requires({"bt != null", "$this.right == null"})
 	@ensures({"$this.right != null", "$this.right == bt"})
 	public void setRight(IBinTree bt) {
-		if (this.right == null) this.right = bt;
+		this.right = bt;
 	}
 	
 	@requires({"left != null", "right != null", "$this.left == null", "$this.right == null"})
 	@ensures({"$this.left != null", "$this.right != null", "$this.left == left", "$this.right == right"})
 	public void setLeftRight(IBinTree left, IBinTree right) {
-		if (this.left == null) this.left = left;
-		if (this.right == null) this.right = right;
+		this.left = left;
+		this.right = right;
 	}
 
 	public boolean hasLeft() {
