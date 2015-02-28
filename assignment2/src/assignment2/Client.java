@@ -1,6 +1,8 @@
 package assignment2;
 
 import assignment2.bintree.base.BinTree;
+import assignment2.bintree.base.IBinTree;
+import assignment2.bintree.other.BalancedBinTree;
 
 public class Client {
 
@@ -10,6 +12,11 @@ public class Client {
 		// Test BinTree (Binary Tree)
 		if (c.testBinaryTree()) {
 			System.out.println("BinTree Passed.");
+		}
+		
+		// Test BalancedBinTree (Balanced Binary Tree)
+		if (c.testBalancedBinaryTree()) {
+			System.out.println("BalancedBinTree Passed.");
 		}
 	}
 	
@@ -58,6 +65,42 @@ public class Client {
 	}
 	
 	private boolean testBalancedBinaryTree() {
+		BalancedBinTree[] bt = new BalancedBinTree[6];
+		
+		for (int i = 0; i < 6; ++i) {
+			bt[i] = new BalancedBinTree(i);
+			assert bt[i].isBalanced();
+		}
+		
+		/**
+		 * Should inherit the invariant of the parent class. Thus,
+		 * the height shouldn't be zero.
+		 */
+		for (BalancedBinTree t : bt) {
+			assert t.height() > 0;
+		}
+		
+		bt[0].setLeft(bt[1]);
+		
+		// Should still be balanced.
+		assert bt[0].isBalanced();
+		
+		bt[0].setRight(bt[2]);
+		
+		// Should still be balanced.
+		assert bt[0].isBalanced();
+		
+		bt[0].getLeft().setLeft(bt[3]);
+		
+		// Should still be balanced.
+		assert bt[0].isBalanced();
+		
+		// Now we try to unbalance it by adding more to one side of the tree.
+		bt[0].getLeft().getLeft().setLeft(bt[4]);
+		
+		// The addition should not have been allowed, thus we should still be balanced.
+		assert bt[0].isBalanced();
+		
 		return true;
 	}
 	
