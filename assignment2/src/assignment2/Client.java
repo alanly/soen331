@@ -3,6 +3,7 @@ package assignment2;
 import assignment2.bintree.base.BinTree;
 import assignment2.bintree.base.IBinTree;
 import assignment2.bintree.other.BalancedBinTree;
+import assignment2.bintree.other.FullBinTree;
 
 public class Client {
 
@@ -17,6 +18,16 @@ public class Client {
 		// Test BalancedBinTree (Balanced Binary Tree)
 		if (c.testBalancedBinaryTree()) {
 			System.out.println("BalancedBinTree Passed.");
+		}
+		
+		// Test FullBinTree (Full Binary Tree)
+		if (c.testFullBinaryTree()) {
+			System.out.println("FullBinTree Passed.");
+		}
+		
+		// Test PerfectBinTree (Perfect Binary Tree)
+		if (c.testPerfectBinaryTree()) {
+			System.out.println("PerfectBinTree Passed.");
 		}
 	}
 	
@@ -96,7 +107,7 @@ public class Client {
 		assert bt[0].isBalanced();
 		
 		// Now we try to unbalance it by adding more to one side of the tree.
-		bt[0].getLeft().getLeft().setLeft(bt[4]);
+		//bt[0].getLeft().getLeft().setLeft(bt[4]); // Should error out.
 		
 		// The addition should not have been allowed, thus we should still be balanced.
 		assert bt[0].isBalanced();
@@ -105,6 +116,49 @@ public class Client {
 	}
 	
 	private boolean testFullBinaryTree() {
+		FullBinTree[] bt = new FullBinTree[5];
+		
+		for (int i = 0; i < 5; ++i) {
+			bt[i] = new FullBinTree(i);
+			assert bt[i].isTwoOrNoLeaf();
+		}
+		
+		// Adding only 1 leaf should violate the invariant.
+		//bt[0].setLeft(bt[1]); // Should error out.
+		assert bt[0].isTwoOrNoLeaf();
+		
+		// Attempting to set one or both to null should violate contract 4 and 8.
+		//bt[0].setLeftRight(null, bt[1]); // Should error out.
+		//bt[0].setLeftRight(bt[1], null); // Should error out.
+		//bt[0].setLeftRight(null, null); // Should error out.
+		
+		// Adding a pair of nodes should be fine.
+		bt[0].setLeftRight(bt[1], bt[2]);
+		assert bt[0].isTwoOrNoLeaf();
+		
+		// The two child nodes should now be what we expect them to be.
+		assert bt[0].getLeft() == bt[1];
+		assert bt[0].getRight() == bt[2];
+		
+		// Attempting to replace the pair of nodes should violate contracts 5 and 9.
+		bt[0].setLeftRight(bt[3], bt[4]);
+		
+		// Make sure the previously set nodes haven't been overwritten.
+		assert bt[0].getLeft() == bt[1];
+		assert bt[0].getRight() == bt[2];
+		
+		// By this point, the method should still be true.
+		assert bt[0].isTwoOrNoLeaf();
+		
+		// This should invalidate the invariant.
+		//((FullBinTree) bt[0].getLeft()).setLeft(bt[3]); // Should error out.
+		
+		// Adding a pair should be fine.
+		((FullBinTree) bt[0].getLeft()).setLeftRight(bt[3], bt[4]);
+		assert bt[0].isTwoOrNoLeaf();
+		assert bt[0].getLeft().getLeft() == bt[3];
+		assert bt[0].getLeft().getRight() == bt[4];
+		
 		return true;
 	}
 	
