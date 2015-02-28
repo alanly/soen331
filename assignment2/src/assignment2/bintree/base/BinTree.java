@@ -8,39 +8,39 @@ import be.ac.ua.ansymo.adbc.annotations.requires;
 public class BinTree implements IBinTree {
 
 	protected long id;
-	private IBinTree left;
-	private IBinTree right;
+	private BinTree left;
+	private BinTree right;
 	
 	@ensures({"$this.left == null", "$this.right == null"})
 	public BinTree(long id) {
 		this.id = id;
 	}
 
-	public IBinTree getLeft() {
+	public BinTree getLeft() {
 		return this.left;
 	}
 
-	public IBinTree getRight() {
+	public BinTree getRight() {
 		return this.right;
 	}
 
-	@requires({"bt != null", "$this.left == null"})
-	@ensures({"$this.left != null", "$this.left == bt"})
+	@requires({"bt != null"})
+	@ensures({"$this.left != null", "($old($this.left)==null)?($this.left==bt):($this.left==$old($this.left))"})
 	public void setLeft(IBinTree bt) {
-		this.left = bt;
+		this.left = (BinTree) bt;
 	}
 
-	@requires({"bt != null", "$this.right == null"})
-	@ensures({"$this.right != null", "$this.right == bt"})
-	public void setRight(IBinTree bt) {
-		this.right = bt;
+	@requires({"bt != null"})
+	@ensures({"$this.right != null", "($old($this.right)==null)?($this.right==bt):($this.right==$old($this.right))"})
+	public void setRight(IBinTree bt) {		
+		this.right = (BinTree) bt;
 	}
 	
 	@requires({"left != null", "right != null", "$this.left == null", "$this.right == null"})
 	@ensures({"$this.left != null", "$this.right != null", "$this.left == left", "$this.right == right"})
 	public void setLeftRight(IBinTree left, IBinTree right) {
-		this.left = left;
-		this.right = right;
+		this.left = (BinTree) left;
+		this.right = (BinTree) right;
 	}
 
 	public boolean hasLeft() {
