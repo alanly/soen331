@@ -27,18 +27,27 @@ public class BinTree implements IBinTree {
 	@requires({"bt != null"})
 	@ensures({"$this.left != null", "($old($this.left)==null)?($this.left==bt):($this.left==$old($this.left))"})
 	public void setLeft(IBinTree bt) {
+		if (this.left != null) return;
+		
 		this.left = (BinTree) bt;
 	}
 
 	@requires({"bt != null"})
 	@ensures({"$this.right != null", "($old($this.right)==null)?($this.right==bt):($this.right==$old($this.right))"})
-	public void setRight(IBinTree bt) {		
+	public void setRight(IBinTree bt) {
+		if (this.right != null) return;
+		
 		this.right = (BinTree) bt;
 	}
 	
-	@requires({"left != null", "right != null", "$this.left == null", "$this.right == null"})
-	@ensures({"$this.left != null", "$this.right != null", "$this.left == left", "$this.right == right"})
+	@requires({"left != null", "right != null"})
+	@ensures({"$this.left != null", "$this.right != null", 
+		"($old($this.left)==null)?($this.left==left):($this.left==$old($this.left))",
+		"($old($this.right)==null)?($this.right==right):($this.right==$old($this.right))"
+	})
 	public void setLeftRight(IBinTree left, IBinTree right) {
+		if (this.left != null || this.right != null) return;
+		
 		this.left = (BinTree) left;
 		this.right = (BinTree) right;
 	}
