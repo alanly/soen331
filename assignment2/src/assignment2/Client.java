@@ -4,6 +4,7 @@ import assignment2.bintree.base.BinTree;
 import assignment2.bintree.base.IBinTree;
 import assignment2.bintree.other.BalancedBinTree;
 import assignment2.bintree.other.FullBinTree;
+import assignment2.bintree.other.PerfectBinTree;
 
 public class Client {
 
@@ -163,6 +164,25 @@ public class Client {
 	}
 	
 	private boolean testPerfectBinaryTree() {
+		PerfectBinTree[] bt = new PerfectBinTree[7];
+		
+		for (int i = 0; i < 7; ++i) {
+			bt[i] = new PerfectBinTree(i);
+			assert bt[i].sameHeight();
+		}
+		
+		// Setting both the left and right should result in a perfect tree.
+		bt[0].setLeftRight(bt[1], bt[2]);
+		assert bt[0].sameHeight();
+		
+		// Setting the children on the left node should result in an imperfect tree.
+		bt[0].getLeft().setLeftRight(bt[3], bt[4]);
+		assert ! bt[0].sameHeight();
+		
+		// Setting the children on the right node should balance it out and create a perfect tree.
+		bt[0].getRight().setLeftRight(bt[5], bt[6]);
+		assert bt[0].sameHeight();
+		
 		return true;
 	}
 
