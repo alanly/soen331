@@ -171,6 +171,10 @@ public class Client {
 			assert bt[i].sameHeight();
 		}
 		
+		// Because we extend a full-bin. tree, we shouldn't be able to only
+		// add a node on one side.
+		//bt[0].setLeft(bt[1]); // Should error out.
+		
 		// Setting both the left and right should result in a perfect tree.
 		bt[0].setLeftRight(bt[1], bt[2]);
 		assert bt[0].sameHeight();
