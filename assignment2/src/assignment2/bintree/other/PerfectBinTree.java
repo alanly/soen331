@@ -1,7 +1,5 @@
 package assignment2.bintree.other;
 
-import be.ac.ua.ansymo.adbc.annotations.invariant;
-
 public class PerfectBinTree extends FullBinTree {
 
 	public PerfectBinTree(long id) {

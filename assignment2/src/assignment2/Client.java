@@ -1,7 +1,6 @@
 package assignment2;
 
 import assignment2.bintree.base.BinTree;
-import assignment2.bintree.base.IBinTree;
 import assignment2.bintree.other.BalancedBinTree;
 import assignment2.bintree.other.FullBinTree;
 import assignment2.bintree.other.PerfectBinTree;
