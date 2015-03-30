@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="assignment3" version="3">
+  <DEPS>
+    <ID name="assignment3" mc="Package" uid="956e06c7-a16d-4406-8375-80b0b322e215"/>
+    <COMPID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="assignment3" mc="Package" uid="956e06c7-a16d-4406-8375-80b0b322e215"/>
+    <PID name="assignment3" mc="Project" uid="aa1a3ea3-b4cd-4e6c-bddf-4f814fea8452"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[assignment3]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
