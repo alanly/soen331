@@ -6,6 +6,7 @@
     <COMPID name="Part 2 - Refine init" mc="StateMachineDiagram" uid="267c69b6-da6c-4e4a-bc9c-e95125ff1d18"/>
     <COMPID name="Part 3 - Refine monitor" mc="StateMachineDiagram" uid="bb323bbe-e029-4146-8462-b3d607a99758"/>
     <COMPID name="Part 4 - Refine lockdown" mc="StateMachineDiagram" uid="4dddbee3-4ef5-4d9e-81f1-f431ae8b35b1"/>
+    <COMPID name="Part 5 - Refine error diagnosis" mc="StateMachineDiagram" uid="70ff3dc0-642d-4187-b16a-39bc0fe89798"/>
     <FOREIGNID name="description" mc="NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
   </DEPS>
   <OBJECT>
@@ -36,6 +37,182 @@
                   <ATT name="status">1970354901745664</ATT>
                 </ATTRIBUTES>
                 <DEPENDENCIES>
+                  <COMP relation="OwnedRegion">
+                    <OBJECT>
+                      <ID name="Region" mc="Region" uid="d4f36119-fb8f-4015-a3c2-6942b5fb8a55"/>
+                      <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"><![CDATA[Region]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES>
+                        <COMP relation="Sub">
+                          <OBJECT>
+                            <ID name="Initial State" mc="InitialPseudoState" uid="c9375f53-56f0-4ef6-97a8-013d242e2dd6"/>
+                            <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                            <ATTRIBUTES>
+                              <ATT name="Name"><![CDATA[Initial State]]></ATT>
+                              <ATT name="status">1970354901745664</ATT>
+                            </ATTRIBUTES>
+                            <DEPENDENCIES>
+                              <COMP relation="OutGoing">
+                                <OBJECT>
+                                  <ID name="Transition" mc="Transition" uid="8888c947-0128-47af-87f2-b47a7c4e575f"/>
+                                  <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                                  <ATTRIBUTES>
+                                    <ATT name="Effect"></ATT>
+                                    <ATT name="ReceivedEvents"></ATT>
+                                    <ATT name="SentEvents"></ATT>
+                                    <ATT name="Guard"></ATT>
+                                    <ATT name="PostCondition"></ATT>
+                                    <ATT name="Name"><![CDATA[Transition]]></ATT>
+                                    <ATT name="status">1970354901745664</ATT>
+                                  </ATTRIBUTES>
+                                  <DEPENDENCIES>
+                                    <LINK relation="Target">
+                                      <REFOBJ>
+                                        <ID name="error_rcv" mc="State" uid="81d50e53-546b-447b-ae0a-177e00e39a86"/>
+                                        <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                                      </REFOBJ>
+                                    </LINK>
+                                  </DEPENDENCIES>
+                                </OBJECT>
+                              </COMP>
+                            </DEPENDENCIES>
+                          </OBJECT>
+                          <OBJECT>
+                            <ID name="error_rcv" mc="State" uid="81d50e53-546b-447b-ae0a-177e00e39a86"/>
+                            <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                            <ATTRIBUTES>
+                              <ATT name="Name"><![CDATA[error_rcv]]></ATT>
+                              <ATT name="status">1970354901745664</ATT>
+                            </ATTRIBUTES>
+                            <DEPENDENCIES>
+                              <COMP relation="OutGoing">
+                                <OBJECT>
+                                  <ID name="Transition" mc="Transition" uid="f9f2b5c6-6db2-42ab-991a-99ddb3a5eae0"/>
+                                  <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                                  <ATTRIBUTES>
+                                    <ATT name="Effect"></ATT>
+                                    <ATT name="ReceivedEvents"></ATT>
+                                    <ATT name="SentEvents"></ATT>
+                                    <ATT name="Guard"><![CDATA[err_protocol_def == true]]></ATT>
+                                    <ATT name="PostCondition"></ATT>
+                                    <ATT name="Name"><![CDATA[Transition]]></ATT>
+                                    <ATT name="status">1970354901745664</ATT>
+                                  </ATTRIBUTES>
+                                  <DEPENDENCIES>
+                                    <LINK relation="Target">
+                                      <REFOBJ>
+                                        <ID name="applicable_rescue" mc="State" uid="c44cf9d4-9f32-45c2-9c40-e9ea7333cca0"/>
+                                        <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                                      </REFOBJ>
+                                    </LINK>
+                                  </DEPENDENCIES>
+                                </OBJECT>
+                                <OBJECT>
+                                  <ID name="Transition1" mc="Transition" uid="1d377584-ad9c-4198-bde8-35d7e6348a4f"/>
+                                  <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                                  <ATTRIBUTES>
+                                    <ATT name="Effect"></ATT>
+                                    <ATT name="ReceivedEvents"></ATT>
+                                    <ATT name="SentEvents"></ATT>
+                                    <ATT name="Guard"><![CDATA[err_protocol_def == false]]></ATT>
+                                    <ATT name="PostCondition"></ATT>
+                                    <ATT name="Name"><![CDATA[Transition1]]></ATT>
+                                    <ATT name="status">1970354901745664</ATT>
+                                  </ATTRIBUTES>
+                                  <DEPENDENCIES>
+                                    <LINK relation="Target">
+                                      <REFOBJ>
+                                        <ID name="reset_module_data" mc="State" uid="64d39908-91bb-4b0c-9436-4f96b834cf12"/>
+                                        <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                                      </REFOBJ>
+                                    </LINK>
+                                  </DEPENDENCIES>
+                                </OBJECT>
+                              </COMP>
+                            </DEPENDENCIES>
+                          </OBJECT>
+                          <OBJECT>
+                            <ID name="applicable_rescue" mc="State" uid="c44cf9d4-9f32-45c2-9c40-e9ea7333cca0"/>
+                            <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                            <ATTRIBUTES>
+                              <ATT name="Name"><![CDATA[applicable_rescue]]></ATT>
+                              <ATT name="status">1970354901745664</ATT>
+                            </ATTRIBUTES>
+                            <DEPENDENCIES>
+                              <COMP relation="OutGoing">
+                                <OBJECT>
+                                  <ID name="Transition" mc="Transition" uid="7b83f2ee-6ba2-4273-8577-c11bb21ca59a"/>
+                                  <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                                  <ATTRIBUTES>
+                                    <ATT name="Effect"></ATT>
+                                    <ATT name="ReceivedEvents"><![CDATA[apply_protocol_rescues]]></ATT>
+                                    <ATT name="SentEvents"></ATT>
+                                    <ATT name="Guard"></ATT>
+                                    <ATT name="PostCondition"></ATT>
+                                    <ATT name="Name"><![CDATA[Transition]]></ATT>
+                                    <ATT name="status">1970354901745664</ATT>
+                                  </ATTRIBUTES>
+                                  <DEPENDENCIES>
+                                    <LINK relation="Target">
+                                      <REFOBJ>
+                                        <ID name="Final State" mc="FinalState" uid="33c1d57d-c332-4d2c-8e18-7d4ddd38bce8"/>
+                                        <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                                      </REFOBJ>
+                                    </LINK>
+                                  </DEPENDENCIES>
+                                </OBJECT>
+                              </COMP>
+                            </DEPENDENCIES>
+                          </OBJECT>
+                          <OBJECT>
+                            <ID name="reset_module_data" mc="State" uid="64d39908-91bb-4b0c-9436-4f96b834cf12"/>
+                            <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                            <ATTRIBUTES>
+                              <ATT name="Name"><![CDATA[reset_module_data]]></ATT>
+                              <ATT name="status">1970354901745664</ATT>
+                            </ATTRIBUTES>
+                            <DEPENDENCIES>
+                              <COMP relation="OutGoing">
+                                <OBJECT>
+                                  <ID name="Transition" mc="Transition" uid="099fb01c-4f99-4cdf-97f9-d8dbaa55aed3"/>
+                                  <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                                  <ATTRIBUTES>
+                                    <ATT name="Effect"></ATT>
+                                    <ATT name="ReceivedEvents"><![CDATA[reset_to_stable]]></ATT>
+                                    <ATT name="SentEvents"></ATT>
+                                    <ATT name="Guard"></ATT>
+                                    <ATT name="PostCondition"></ATT>
+                                    <ATT name="Name"><![CDATA[Transition]]></ATT>
+                                    <ATT name="status">1970354901745664</ATT>
+                                  </ATTRIBUTES>
+                                  <DEPENDENCIES>
+                                    <LINK relation="Target">
+                                      <REFOBJ>
+                                        <ID name="Final State" mc="FinalState" uid="33c1d57d-c332-4d2c-8e18-7d4ddd38bce8"/>
+                                        <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                                      </REFOBJ>
+                                    </LINK>
+                                  </DEPENDENCIES>
+                                </OBJECT>
+                              </COMP>
+                            </DEPENDENCIES>
+                          </OBJECT>
+                          <OBJECT>
+                            <ID name="Final State" mc="FinalState" uid="33c1d57d-c332-4d2c-8e18-7d4ddd38bce8"/>
+                            <PID name="State Machine" mc="StateMachine" uid="f6a8e571-9af9-4546-a07b-36937a22e5d3"/>
+                            <ATTRIBUTES>
+                              <ATT name="Name"><![CDATA[Final State]]></ATT>
+                              <ATT name="status">1970354901745664</ATT>
+                            </ATTRIBUTES>
+                            <DEPENDENCIES></DEPENDENCIES>
+                          </OBJECT>
+                        </COMP>
+                      </DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
                   <COMP relation="OutGoing">
                     <OBJECT>
                       <ID name="Transition" mc="Transition" uid="51385063-164a-43f8-889b-2ddd4aaec3e9"/>
@@ -1250,6 +1427,7 @@
         <COMPID name="Part 2 - Refine init" mc="StateMachineDiagram" uid="267c69b6-da6c-4e4a-bc9c-e95125ff1d18"/>
         <COMPID name="Part 3 - Refine monitor" mc="StateMachineDiagram" uid="bb323bbe-e029-4146-8462-b3d607a99758"/>
         <COMPID name="Part 4 - Refine lockdown" mc="StateMachineDiagram" uid="4dddbee3-4ef5-4d9e-81f1-f431ae8b35b1"/>
+        <COMPID name="Part 5 - Refine error diagnosis" mc="StateMachineDiagram" uid="70ff3dc0-642d-4187-b16a-39bc0fe89798"/>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>
