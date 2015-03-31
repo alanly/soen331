@@ -36,3 +36,14 @@ state(alt_temp).
 state(alt_psi).
 state(risk_assess).
 state(safe_status).
+
+% -----------
+% Transitions
+% -----------
+
+% boot.init Transitions
+transition(init, null, boot_hw).
+transition(boot_hw, hw_ok, senchk).
+transition(senchk, senok, tchk).
+transition(tchk, t_ok, psichk).
+transition(psichk, psi_ok, ready).
